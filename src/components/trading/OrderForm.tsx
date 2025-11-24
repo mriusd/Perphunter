@@ -2,9 +2,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Button, Input, Select, Card, CardHeader, CardTitle, CardContent } from '@/components/ui'
-import { useTradingStore } from '@/store'
-import { DEXType, OrderFormData } from '@/types'
+import { Button, Input, Select, Card, CardHeader, CardTitle, CardContent } from '../ui'
+import { useTradingStore } from '../../store'
+import { DEXType, OrderFormData } from '../../types'
 
 const orderFormSchema = z.object({
   market: z.string().min(1, 'Please select a market'),

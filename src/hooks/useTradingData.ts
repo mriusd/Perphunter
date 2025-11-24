@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { dexManager } from '@/services'
-import { DEXType, Balance, Position, Market } from '@/types'
+import { dexManager } from '../services'
+import { DEXType, Balance, Position, Market } from '../types'
 
 export const useTradingData = (dex?: DEXType) => {
   const {

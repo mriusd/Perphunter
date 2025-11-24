@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui'
-import { useTradingData } from '@/hooks/useTradingData'
-import { Balance } from '@/types'
+import { Card, CardHeader, CardTitle, CardContent } from '../ui'
+import { useTradingData } from '../../hooks/useTradingData'
+import { Balance } from '../../types'
 
 const BalancesCard: React.FC = () => {
   const { balances, isLoading, error } = useTradingData()

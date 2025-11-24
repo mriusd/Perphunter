@@ -1,5 +1,5 @@
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
-import { useUserStore } from '@/store'
+import { useUserStore } from '../store'
 import { useEffect } from 'react'
 
 export const useWallet = () => {

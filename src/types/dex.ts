@@ -31,9 +31,31 @@ export interface Market {
   quoteAsset: string;
   price: string;
   change24h: number;
+  changePercent24h: string;
   volume24h: string;
-  funding: number;
+  openInterest: string;
+  fundingRate: string;
+  maxLeverage: number;
+  minOrderSize: string;
+  tickSize: string;
+  isActive: boolean;
+  isFavorite: boolean;
   dex: DEXType;
+  marketType: 'PERP' | 'SPOT';
+  lastUpdated: number;
+}
+
+export interface MarketStats {
+  high24h: string;
+  low24h: string;
+  volume24h: string;
+  turnover24h: string;
+  openInterest: string;
+  fundingRate: string;
+  nextFundingTime: number;
+  indexPrice: string;
+  markPrice: string;
+  premiumRate: string;
 }
 
 export interface OrderRequest {
@@ -89,6 +111,8 @@ export interface DEXInterface {
   cancelOrder(orderId: string): Promise<boolean>;
   getMarketData(): Promise<MarketData[]>;
   getMarkets(): Promise<Market[]>;
+  getMarketStats(symbol: string): Promise<MarketStats>;
+  getAllMarketStats(): Promise<{ [symbol: string]: MarketStats }>;
   connect(): Promise<boolean>;
   disconnect(): Promise<void>;
 }

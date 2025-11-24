@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Balance, Position, Transaction, PortfolioSummary } from '@/types'
+import { Balance, Position, Transaction, PortfolioSummary } from '../types'
 
 interface PortfolioStore {
   balances: Balance[]

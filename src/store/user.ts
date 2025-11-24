@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
-import { WalletState, UserPreferences, DEXType } from '@/types'
+import { WalletState, UserPreferences, DEXType } from '../types'
 
 interface UserStore {
   wallet: WalletState

@@ -1,6 +1,6 @@
 import React from 'react'
-import { PositionsTable } from '@/components/portfolio/PositionsTable'
-import { BalancesCard } from '@/components/portfolio/BalancesCard'
+import { PositionsTable } from '../components/portfolio/PositionsTable'
+import { BalancesCard } from '../components/portfolio/BalancesCard'
 
 const Portfolio: React.FC = () => {
   return (

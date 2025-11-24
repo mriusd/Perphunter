@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { TradingState, OrderFormData, DEXType } from '@/types'
+import { TradingState, OrderFormData, DEXType } from '../types'
 
 interface TradingStore extends TradingState {
   setSelectedDEX: (dex: DEXType) => void

@@ -1,53 +1,154 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
+@theme {
+  --color-cosmic-bg: #050508;
+  --color-cosmic-card: #0a0a0f;
+  --color-cosmic-gold: #ffd700;
+  --color-cosmic-cyan: #00f0ff;
+  --color-cosmic-pink: #ff003c;
+  --color-cosmic-green: #00ff9d;
+  --color-cosmic-grid: #1a1a2e;
+  --color-cosmic-text: #e0e0e0;
+  --color-cosmic-dim: #4a4a6a;
+
+  --font-mono: "Space Mono", "VT323", monospace;
+  --font-pixel: "VT323", monospace;
+
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-glitch: glitch 1s linear infinite;
+
+  @keyframes glow {
+    from { box-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff; }
+    to { box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff; }
+  }
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+}
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
+
+/* Base Styles */
 @layer base {
-  * {
-    @apply border-border;
-  }
-  
   body {
-    @apply bg-gray-950 text-white font-sans antialiased;
+    @apply bg-cosmic-bg text-cosmic-text font-mono overflow-hidden selection:bg-cosmic-cyan selection:text-black;
   }
   
-  html {
-    @apply scroll-smooth;
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-cosmic-bg border-l border-cosmic-grid;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cosmic-dim hover:bg-cosmic-cyan transition-colors;
+  }
+
+  /* CRT Scanline Effect */
+  .scanlines {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.2) 50%,
+      rgba(0,0,0,0.2)
+    );
+    background-size: 100% 4px;
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    opacity: 0.08;
+  }
+
+  /* Cosmic Grid Background */
+  .cyber-grid {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(26, 26, 46, 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(26, 26, 46, 0.5) 1px, transparent 1px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  .text-glow-pink {
+    text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors;
+  /* Cyberpunk Window Frame */
+  .cyber-window {
+    @apply bg-cosmic-card/90 border border-cosmic-dim relative backdrop-blur-sm;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
-  
-  .btn-secondary {
-    @apply bg-gray-700 hover:bg-gray-600 text-white font-medium px-4 py-2 rounded-lg transition-colors;
-  }
-  
-  .btn-success {
-    @apply bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg transition-colors;
-  }
-  
-  .btn-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg transition-colors;
-  }
-  
-  .card {
-    @apply bg-gray-900 border border-gray-800 rounded-lg p-4;
-  }
-  
-  .input-field {
-    @apply bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-  }
-}
 
-@layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
+  /* Pixel Corners */
+  .cyber-window::after, .cyber-window::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    transition: all 0.3s ease;
+    pointer-events: none;
   }
   
-  .border-gradient {
-    @apply border border-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-border;
+  .cyber-window::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--color-cosmic-cyan);
+    border-left: 2px solid var(--color-cosmic-cyan);
+  }
+  
+  .cyber-window::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid var(--color-cosmic-cyan);
+    border-right: 2px solid var(--color-cosmic-cyan);
+  }
+
+  .cyber-window:hover::before, .cyber-window:hover::after {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+  }
+  
+  .cyber-header {
+    @apply bg-gradient-to-r from-cosmic-dim/30 to-transparent text-cosmic-cyan px-3 py-1.5 font-bold uppercase flex justify-between items-center select-none cursor-grab active:cursor-grabbing border-b border-cosmic-dim/50 font-pixel tracking-widest text-sm;
+  }
+
+  .cyber-input {
+    @apply bg-black/50 border border-cosmic-dim text-cosmic-cyan px-3 py-1.5 w-full focus:border-cosmic-cyan focus:outline-none focus:ring-1 focus:ring-cosmic-cyan font-mono text-sm transition-all;
+  }
+  
+  .cyber-btn {
+    @apply bg-cosmic-dim/20 text-cosmic-cyan font-bold px-4 py-1.5 hover:bg-cosmic-cyan hover:text-black transition-all uppercase border border-cosmic-cyan/50 hover:border-cosmic-cyan text-sm font-pixel tracking-wider;
+  }
+
+  .cyber-btn-primary {
+    @apply bg-cosmic-cyan text-black font-bold px-4 py-2 hover:bg-white hover:text-black transition-all uppercase border border-cosmic-cyan shadow-[0_0_15px_rgba(0,240,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.6)];
   }
 }

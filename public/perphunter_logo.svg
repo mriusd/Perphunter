@@ -1,0 +1,41 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="512" height="512" fill="url(#bg)" />
+  
+  <!-- Grid lines -->
+  <path d="M 128 0 V 512 M 256 0 V 512 M 384 0 V 512" stroke="#334155" stroke-width="1" opacity="0.2" />
+  <path d="M 0 128 H 512 M 0 256 H 512 M 0 384 H 512" stroke="#334155" stroke-width="1" opacity="0.2" />
+
+  <g filter="url(#neon-glow)">
+    <!-- Scope Circle -->
+    <circle cx="256" cy="256" r="160" fill="none" stroke="#22d3ee" stroke-width="8" />
+    
+    <!-- Scope Ticks -->
+    <line x1="256" y1="80" x2="256" y2="56" stroke="#22d3ee" stroke-width="8" stroke-linecap="round" />
+    <line x1="256" y1="432" x2="256" y2="456" stroke="#22d3ee" stroke-width="8" stroke-linecap="round" />
+    <line x1="80" y1="256" x2="56" y2="256" stroke="#22d3ee" stroke-width="8" stroke-linecap="round" />
+    <line x1="432" y1="256" x2="456" y2="256" stroke="#22d3ee" stroke-width="8" stroke-linecap="round" />
+    
+    <!-- Center Dot -->
+    <circle cx="256" cy="256" r="4" fill="#22d3ee" />
+
+    <!-- Chart Line -->
+    <path d="M 146 320 L 200 280 L 240 300 L 366 192" fill="none" stroke="#d946ef" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Arrow Head for Chart -->
+    <path d="M 340 192 L 366 192 L 366 218" fill="none" stroke="#d946ef" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

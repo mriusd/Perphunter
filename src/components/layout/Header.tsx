@@ -1,7 +1,7 @@
 import React from 'react'
 import { WalletIcon, TrendingUpIcon } from 'lucide-react'
-import { Button } from '@/components/ui'
-import { useWallet } from '@/hooks/useWallet'
+import { Button } from '../ui'
+import { useWallet } from '../../hooks/useWallet'
 
 const Header: React.FC = () => {
   const { wallet, connect, disconnect } = useWallet()

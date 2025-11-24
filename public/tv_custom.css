@@ -1,0 +1,33 @@
+body {
+    background-color: #050508 !important;
+    color: #e0e0e0 !important;
+    font-family: "Space Mono", monospace !important;
+}
+
+.chart-page {
+    background-color: #050508 !important;
+}
+
+.tv-side-toolbar {
+    border-right: 1px solid #1a1a2e !important;
+    background-color: #0a0a0f !important;
+}
+
+.group-wWM3zP_M- {
+    background-color: #0a0a0f !important;
+}
+
+.button-2ioYhFEY- {
+    background-color: #0a0a0f !important;
+    color: #4a4a6a !important;
+}
+
+.button-2ioYhFEY-.is-active-2ioYhFEY- {
+    color: #00f0ff !important;
+}
+
+/* Hide the top bar if desired or style it */
+.header-chart-panel {
+    background-color: #0a0a0f !important;
+    border-bottom: 1px solid #1a1a2e !important;
+}
